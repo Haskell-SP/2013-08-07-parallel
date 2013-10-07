@@ -1,0 +1,12 @@
+history:
+
+ghci Fib.hs 
+ghci Fib.hs +RTS -N1
+ghci Fib.hs +RTS -N4
+ghc --make -threaded -fforce-recomp -O -rtsopts Fib.hs && ./Fib +RTS -N1 -sstderr
+ghc --make -threaded -fforce-recomp -O -rtsopts Fib.hs && ./Fib +RTS -N2 -sstderr
+ghc --make -threaded -fforce-recomp -O -rtsopts Fib.hs && ./Fib +RTS -N4 -sstderr
+cabal update
+cabal install parallel
+cabal install ThreadScope
+cabal install monad-par
